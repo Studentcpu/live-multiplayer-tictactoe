@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">REAL-TIME MULTIPLAYER</p>
+      <h1>Live Tic-Tac-Toe</h1>
+      <p>Play with a friend on another phone, tablet, or computer using a room code.</p>
+    </section>
+
+    <section id="lobby" class="card lobby">
+      <label>Your name<input id="name" maxlength="20" placeholder="Raj" /></label>
+      <div class="actions">
+        <button id="create">Create Room</button>
+        <span>or</span>
+        <div class="joinRow">
+          <input id="roomCode" maxlength="5" placeholder="ABCDE" autocomplete="off" />
+          <button id="join" class="secondary">Join Room</button>
+        </div>
+      </div>
+      <p id="error" class="error"></p>
+    </section>
+
+    <section id="game" class="game hidden">
+      <div class="topbar card">
+        <div><span class="muted">ROOM</span><strong id="code">—</strong></div>
+        <button id="copy" class="ghost">Copy code</button>
+      </div>
+
+      <div class="status card">
+        <div id="players"></div>
+        <h2 id="statusText">Waiting for player…</h2>
+        <p id="youAre"></p>
+      </div>
+
+      <div id="board" class="board" aria-label="Tic-tac-toe board"></div>
+      <button id="rematch" class="hidden">Rematch</button>
+
+      <details class="rules card" open>
+        <summary>How to play</summary>
+        <ol>
+          <li>Two players share one room. The host is <b>X</b>; the second player is <b>O</b>.</li>
+          <li>Players take turns placing their symbol in one empty square.</li>
+          <li>First to get three symbols in a row, column, or diagonal wins.</li>
+          <li>If all 9 squares are filled and nobody has three in a row, the game is a draw.</li>
+          <li>A move is valid only on your turn and only in an empty square.</li>
+        </ol>
+      </details>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
